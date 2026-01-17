@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Anu - An Experience ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background: #000;
+            color: white;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 300px;
+        }
+
+        .nav-btn {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Section 1: 3D Heart with Particles */
+        #section1 {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            overflow: hidden;
+        }
+
+        .canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .overlay-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .big-title {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Section 2: Matrix Rain */
+        #section2 {
+            background: #000;
+        }
+
+        .matrix-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .matrix-message {
+            position: relative;
+            z-index: 10;
+            font-size: 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid #0f0;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+        }
+
+        /* Section 3: Starry Night */
+        #section3 {
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #fff, transparent);
+            animation: shoot 3s linear infinite;
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-500px) translateY(500px);
+                opacity: 0;
+            }
+        }
+
+        /* Section 4: Neon Cyberpunk */
+        #section4 {
+            background: #0a0a0a;
+        }
+
+        .neon-text {
+            font-size: 3rem;
+            text-align: center;
+            animation: neon-flicker 1.5s ease-in-out infinite alternate;
+        }
+
+        .neon-pink {
+            color: #ff006e;
+            text-shadow: 
+                0 0 10px #ff006e,
+                0 0 20px #ff006e,
+                0 0 30px #ff006e,
+                0 0 40px #ff006e;
+        }
+
+        .neon-blue {
+            color: #00f5ff;
+            text-shadow: 
+                0 0 10px #00f5ff,
+                0 0 20px #00f5ff,
+                0 0 30px #00f5ff,
+                0 0 40px #00f5ff;
+        }
+
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 10px currentColor,
+                    0 0 20px currentColor,
+                    0 0 30px currentColor,
+                    0 0 40px currentColor;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        .cyber-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(0deg, transparent 24%, rgba(255, 0, 110, 0.05) 25%, rgba(255, 0, 110, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 110, 0.05) 75%, rgba(255, 0, 110, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 245, 255, 0.05) 25%, rgba(0, 245, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 245, 255, 0.05) 75%, rgba(0, 245, 255, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+        }
+
+        /* Section 5: Music Visualizer */
+        #section5 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .visualizer-bars {
+            display: flex;
+            gap: 5px;
+            align-items: flex-end;
+            height: 200px;
+            margin: 2rem 0;
+        }
+
+        .bar {
+            width: 20px;
+            background: linear-gradient(to top, #ff006e, #00f5ff);
+            border-radius: 5px 5px 0 0;
+            animation: bar-bounce 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes bar-bounce {
+            to { height: var(--height); }
+        }
+
+        /* Section 6: Northern Lights */
+        #section6 {
+            background: linear-gradient(to bottom, #000428, #004e92);
+        }
+
+        .aurora {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(0, 255, 150, 0.3), transparent),
+                radial-gradient(ellipse at 30% 60%, rgba(138, 43, 226, 0.3), transparent),
+                radial-gradient(ellipse at 70% 40%, rgba(0, 191, 255, 0.3), transparent);
+            filter: blur(50px);
+            animation: aurora-wave 8s ease-in-out infinite;
+        }
+
+        @keyframes aurora-wave {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+            50% { transform: translateY(-50px) scale(1.1); opacity: 0.8; }
+        }
+
+        /* Section 7: Constellation */
+        #section7 {
+            background: #000;
+        }
+
+        #constellation-canvas {
+            cursor: crosshair;
+        }
+
+        .constellation-info {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Message boxes */
+        .message-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .message-box h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .message-box p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Floating hearts */
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: float-up 6s ease-in infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .big-title {
+                font-size: 2.5rem;
+            }
+            .neon-text {
+                font-size: 2rem;
+            }
+            .message-box {
+                padding: 1rem;
+            }
+            .nav {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-btn" onclick="scrollToSection(0)">3D Heart</button>
+        <button class="nav-btn" onclick="scrollToSection(1)">Matrix</button>
+        <button class="nav-btn" onclick="scrollToSection(2)">Stars</button>
+        <button class="nav-btn" onclick="scrollToSection(3)">Neon</button>
+        <button class="nav-btn" onclick="scrollToSection(4)">Visualizer</button>
+        <button class="nav-btn" onclick="scrollToSection(5)">Aurora</button>
+        <button class="nav-btn" onclick="scrollToSection(6)">Constellation</button>
+    </div>
+
+    <!-- Section 1: 3D Heart with Particles -->
+    <div class="section" id="section1">
+        <div class="canvas-container">
+            <canvas id="heart-canvas"></canvas>
+        </div>
+        <div class="overlay-text">
+            <h1 class="big-title">I Love You, Anu ❤️</h1>
+            <div class="message-box">
+                <h2>My Heart Beats for You</h2>
+                <p>Every particle in this universe reminds me of you. You're the center of my world, the reason my heart beats with such passion.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Matrix Rain -->
+    <div class="section" id="section2">
+        <div class="matrix-container">
+            <canvas id="matrix-canvas"></canvas>
+        </div>
+        <div class="matrix-message">
+            <h2>Decoding My Love...</h2>
+            <p>In the code of life, you're the only variable I need.</p>
+            <p style="color: #0f0; margin-top: 1rem;">while(true) { love(Anu); }</p>
+        </div>
+    </div>
+
+    <!-- Section 3: Starry Night -->
+    <div class="section" id="section3">
+        <div id="stars-container"></div>
+        <div class="overlay-text">
+            <h1 class="big-title">Written in the Stars ✨</h1>
+            <div class="message-box">
+                <h2>Our Destiny</h2>
+                <p>Among billions of stars, you shine the brightest. Our love was written in the cosmos long before we met.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Neon Cyberpunk -->
+    <div class="section" id="section4">
+        <div class="cyber-grid"></div>
+        <div class="overlay-text">
+            <h1 class="neon-text neon-pink">ANU</h1>
+            <h2 class="neon-text neon-blue">You're My Reality</h2>
+            <div class="message-box">
+                <h2>In Every Dimension</h2>
+                <p>In this digital age, in every virtual world, in every possible reality - I choose you. Always.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 5: Music Visualizer -->
+    <div class="section" id="section5">
+        <div class="overlay-text">
+            <h1 class="big-title">The Rhythm of Us 🎵</h1>
+            <div class="visualizer-bars" id="visualizer">
+                <!-- Bars will be generated by JS -->
+            </div>
+            <div class="message-box">
+                <h2>Our Symphony</h2>
+                <p>Every beat, every note, every melody reminds me of the beautiful harmony we create together.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 6: Northern Lights -->
+    <div class="section" id="section6">
+        <div class="aurora"></div>
+        <div class="overlay-text">
+            <h1 class="big-title">Like the Aurora 🌌</h1>
+            <div class="message-box">
+                <h2>Magical & Rare</h2>
+                <p>Just like the northern lights, you're a rare and magical phenomenon that fills my life with wonder and beauty.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 7: Constellation -->
+    <div class="section" id="section7">
+        <div class="constellation-info">
+            <h1 class="big-title">Connect the Stars ⭐</h1>
+            <p style="margin: 1rem 0;">Click on the stars to draw your own constellation of love</p>
+        </div>
+        <canvas id="constellation-canvas"></canvas>
+        <div class="message-box" style="margin-top: 2rem;">
+            <h2>Forever Connected</h2>
+            <p>Like stars in a constellation, we're forever connected across the vastness of space and time. You complete my universe.</p>
+        </div>
+    </div>
+
+    <script>
+        // Utility function to scroll to sections
+        function scrollToSection(index) {
+            const sections = document.querySelectorAll('.section');
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Section 1: 3D Heart with Particles
+        const heartCanvas = document.getElementById('heart-canvas');
+        const heartCtx = heartCanvas.getContext('2d');
+        heartCanvas.width = window.innerWidth;
+        heartCanvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * heartCanvas.width;
+                this.y = Math.random() * heartCanvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.color = `hsl(${Math.random() * 60 + 300}, 100%, ${Math.random() * 30 + 50}%)`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > heartCanvas.width || this.y < 0 || this.y > heartCanvas.height) {
+                    this.reset();
+                }
+            }
+            draw() {
+                heartCtx.fillStyle = this.color;
+                heartCtx.beginPath();
+                heartCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                heartCtx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawHeart(x, y, size) {
+            heartCtx.save();
+            heartCtx.translate(x, y);
+            heartCtx.scale(size, size);
+            heartCtx.fillStyle = 'rgba(255, 105, 180, 0.8)';
+            heartCtx.beginPath();
+            heartCtx.moveTo(0, 0);
+            heartCtx.bezierCurveTo(-25, -25, -50, 0, 0, 30);
+            heartCtx.bezierCurveTo(50, 0, 25, -25, 0, 0);
+            heartCtx.fill();
+            heartCtx.strokeStyle = 'rgba(255, 182, 193, 0.5)';
+            heartCtx.lineWidth = 2;
+            heartCtx.stroke();
+            heartCtx.restore();
+        }
+
+        let heartRotation = 0;
+        function animateHeart() {
+            heartCtx.clearRect(0, 0, heartCanvas.width, heartCanvas.height);
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            heartCtx.save();
+            heartCtx.translate(heartCanvas.width / 2, heartCanvas.height / 2);
+            heartCtx.rotate(heartRotation);
+            drawHeart(0, 0, 2 + Math.sin(Date.now() / 500) * 0.3);
+            heartCtx.restore();
+
+            heartRotation += 0.005;
+            requestAnimationFrame(animateHeart);
+        }
+        animateHeart();
+
+        // Section 2: Matrix Rain
+        const matrixCanvas = document.getElementById('matrix-canvas');
+        const matrixCtx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+
+        const matrixChars = 'ANUILOVEYOU01';
+        const fontSize = 16;
+        const columns = matrixCanvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            
+            matrixCtx.fillStyle = '#0F0';
+            matrixCtx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                matrixCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        // Section 3: Starry Night with Shooting Stars
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 50 + '%';
+            star.style.width = Math.random() * 100 + 50 + 'px';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+            setTimeout(() => star.remove(), 3000);
+        }
+        setInterval(createShootingStar, 2000);
+
+        // Section 5: Music Visualizer
+        const visualizer = document.getElementById('visualizer');
+        for (let i = 0; i < 30; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            const height = Math.random() * 150 + 50;
+            bar.style.setProperty('--height', height + 'px');
+            bar.style.height = '50px';
+            bar.style.animationDelay = i * 0.05 + 's';
+            visualizer.appendChild(bar);
+        }
+
+        // Section 7: Constellation
+        const constellationCanvas = document.getElementById('constellation-canvas');
+        const constellationCtx = constellationCanvas.getContext('2d');
+        constellationCanvas.width = window.innerWidth - 40;
+        constellationCanvas.height = 400;
+
+        const constellationStars = [];
+        const connections = [];
+
+        for (let i = 0; i < 50; i++) {
+            constellationStars.push({
+                x: Math.random() * constellationCanvas.width,
+                y: Math.random() * constellationCanvas.height,
+                radius: Math.random() * 3 + 2
+            });
+        }
+
+        function drawConstellation() {
+            constellationCtx.fillStyle = '#000';
+            constellationCtx.fillRect(0, 0, constellationCanvas.width, constellationCanvas.height);
+            
+            constellationCtx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+            constellationCtx.lineWidth = 2;
+            connections.forEach(conn => {
+                constellationCtx.beginPath();
+                constellationCtx.moveTo(conn.x1, conn.y1);
+                constellationCtx.lineTo(conn.x2, conn.y2);
+                constellationCtx.stroke();
+            });
+
+            constellationStars.forEach(star => {
+                constellationCtx.fillStyle = '#fff';
+                constellationCtx.beginPath();
+                constellationCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                constellationCtx.fill();
+                
+                constellationCtx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                constellationCtx.beginPath();
+                constellationCtx.arc(star.x, star.y, star.radius * 2, 0, Math.PI * 2);
+                constellationCtx.fill();
+            });
+        }
+
+        let lastClickedStar = null;
+        constellationCanvas.addEventListener('click', (e) => {
+            const rect = constellationCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const clickedStar = constellationStars.find(star => {
+                const dist = Math.sqrt((x - star.x) ** 2 + (y - star.y) ** 2);
+                return dist < star.radius * 3;
+            });
+
+            if (clickedStar) {
+                if (lastClickedStar && lastClickedStar !== clickedStar) {
+                    connections.push({
+                        x1: lastClickedStar.x,
+                        y1: lastClickedStar.y,
+                        x2: clickedStar.x,
+                        y2: clickedStar.y
+                    });
+                    lastClickedStar = null;
+                } else {
+                    lastClickedStar = clickedStar;
+                }
+                drawConstellation();
+            }
+        });
+
+        drawConstellation();
+
+        // Floating hearts throughout
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = ['❤️', '💕', '💖', '💗', '💓'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+        setInterval(createFloatingHeart, 1000);
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            heartCanvas.width = window.innerWidth;
+            heartCanvas.height = window.innerHeight;
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            constellationCanvas.width = window.innerWidth - 40;
+        });
+    </script>
+</body>
+</html>
